@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    form(method='POST' action='new')
+        h3 Add new post
+        label(for='name') Name
+        input#name(type='text' required='true')
+        label(for='Message') Message
+        textarea#message(required='true')
