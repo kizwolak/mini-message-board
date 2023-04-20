@@ -6,3 +6,31 @@ body {
 a {
   color: #00B7FF;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+form > * {
+  display: flex;
+  gap: 3rem;
+}
+
+.name-input > label {
+  width: 3rem;
+}
+
+.msg-input > label {
+  width: 3rem;
+}
+
+.msg-input > textarea {
+  width: 20rem;
+  height: 6rem;
+}
+
+form > button {
+  width: fit-content;
+}
