@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  a(href = '/new') Create new message
   each message in messages
     .message 
       h4 #{message.user}
