@@ -1,16 +1,16 @@
-# fly.toml app configuration file generated for autumn-glitter-8219 on 2023-04-21T01:26:38-03:00
+# fly.toml app configuration file generated for purple-field-6350 on 2023-04-21T01:44:03-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "autumn-glitter-8219"
-primary_region = "gig"
+app = "purple-field-6350"
+primary_region = "gru"
 
 [env]
   PORT = "8080"
 
 [http_service]
-  internal_port = 8081
+  internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
