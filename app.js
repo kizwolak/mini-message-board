@@ -11,7 +11,7 @@ const uri = process.env.SECRET_MONGODB_LINK;
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/new");
 const client = new MongoClient(uri);
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || "8080";
 
 var app = express();
 
@@ -61,4 +61,4 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-app.listen(8080);
+app.listen(PORT);
