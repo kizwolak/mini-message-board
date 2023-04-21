@@ -29,7 +29,7 @@ async function run() {
     await client.close();
   }
 }
-// run().catch(console.dir);
+run().catch(console.dir);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -61,3 +61,4 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+app.listen(8080);
