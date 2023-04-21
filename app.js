@@ -12,7 +12,6 @@ const uri =
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/new");
 const client = new MongoClient(uri);
-const PORT = process.env.PORT || "8080";
 
 var app = express();
 
@@ -30,7 +29,7 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+// run().catch(console.dir);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
