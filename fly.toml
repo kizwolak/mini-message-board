@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for lively-sky-3930 on 2023-04-21T13:21:22-03:00
+# fly.toml app configuration file generated for dawn-leaf-4964 on 2023-04-21T18:23:50-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "lively-sky-3930"
-primary_region = "gru"
+app = "dawn-leaf-4964"
+primary_region = "gig"
 
 [env]
   PORT = "8080"
@@ -15,6 +15,18 @@ primary_region = "gru"
   auto_stop_machines = true
   auto_start_machines = true
 
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = "80"
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = "443"
+  
 [checks]
   [checks.alive]
     type = "tcp"
