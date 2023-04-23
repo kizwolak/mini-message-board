@@ -7,8 +7,7 @@ require("dotenv").config();
 const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const uri =
-  "mongodb+srv://kizwolak:Tcq1mSFgfIch9k2L@cluster0.nzilhsf.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.SECRET_MONGODB_LINK;
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/new");
 const client = new MongoClient(uri);
