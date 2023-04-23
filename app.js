@@ -12,6 +12,8 @@ const uri =
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/new");
 const client = new MongoClient(uri);
+let fetchedMessages;
+let msgCollection;
 
 var app = express();
 
@@ -20,16 +22,15 @@ async function run() {
     await client.connect();
     const database = client.db("messages");
     const messages = database.collection("messages");
+    msgCollection = messages;
     // Query for a movie that has the title 'Back to the Future'
-    const movie = await messages.find().toArray();
-    console.log(movie);
-    console.log("test");
+    fetchedMessages = await messages.find().toArray();
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
-// run().catch(console.dir);
+run().catch(console.dir);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -41,8 +42,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/new", usersRouter);
+app.use(
+  "/",
+  function (req, res, next) {
+    req.messages = fetchedMessages;
+    next();
+  },
+  indexRouter
+);
+app.use(
+  "/new",
+  function (req, res, next) {
+    req.messages = msgCollection;
+    next();
+  },
+  usersRouter
+);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
