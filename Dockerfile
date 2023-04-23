@@ -22,13 +22,11 @@ RUN apt-get update -qq && \
 
 # Install node modules
 COPY --link package.json package-lock.json .
-RUN npm install --production=false
+RUN npm install
 
 # Copy application code
 COPY --link . .
 
-# Remove development dependencies
-RUN npm prune --production
 
 
 # Final stage for app image
